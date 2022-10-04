@@ -1,0 +1,29 @@
+---
+import HeaderLink from './HeaderLink.astro'
+import { Icon } from 'astro-icon'
+---
+
+<header>
+	<h2>TITULO</h2>
+	<nav class="flex justify-center items-center">
+		<HeaderLink href="/" rel="prefetch"
+			><Icon name="jam:home-f" />Home</HeaderLink
+		>
+		<HeaderLink href="/blog" rel="prefetch"
+			><Icon name="jam:blogger" />Blog</HeaderLink
+		>
+		<HeaderLink href="/about" rel="prefetch"
+			><Icon name="jam:coffee" />About</HeaderLink
+		>
+		<HeaderLink
+			href="https://github.com/withastro/astro"
+			target="_blank"
+			rel="prefetch"><Icon name="jam:github" />GitHub</HeaderLink
+		>
+		<HeaderLink
+			href="https://github.com/withastro/astro"
+			target="_blank"
+			rel="prefetch"><Icon name="jam:linkedin" />Linkedin</HeaderLink
+		>
+	</nav>
+</header>
