@@ -1,0 +1,24 @@
+---
+import { Icon } from 'astro-icon'
+import HeaderLink from './HeaderLink.astro'
+
+export interface Props {
+	link?: string
+	icon: string
+	href: string
+	target?: string
+	title?: string
+}
+
+const { href, icon, link, target, title } = Astro.props
+---
+
+<li class="list-none flex justify-center items-center">
+	<HeaderLink
+		class="flex justify-center items-center font-semibold text-rose-50 hover:text-pink-600 gap-1"
+		href={href}
+		target={target}
+		rel="prefetch"
+		><Icon name={icon} class="h-5" title={title} />{link}</HeaderLink
+	>
+</li>
