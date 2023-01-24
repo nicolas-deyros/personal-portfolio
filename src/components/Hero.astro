@@ -1,0 +1,25 @@
+---
+import { Picture } from '@astrojs/image/components'
+---
+
+<div class="flex flex-col items-center justify-center w-[300px] md:w-full">
+	<Picture
+		src={import('../assets/me.jpg')}
+		widths={[200, 400, 800]}
+		sizes="(max-width: 100px) 50vw, 350px"
+		formats={['avif', 'jpeg', 'png', 'webp']}
+		alt="Nicolas Deyros avatar"
+		aspectRatio="1:1"
+	/>
+
+	<h1
+		class="text-3xl md:text-5xl lg:text-7xl text-center font-black text-slate-900 leading-none">
+		Job Description: <br />
+		<small class="text-lg md:text-xl lg:text-2xl text-slate-500 leading-none">
+			Project Manager, Programmer and Advertiser <br />
+			<span class="text-base md:text-lg lg:text-xl text-slate-300">
+				a.k.a Problem Solver
+			</span>
+		</small>
+	</h1>
+</div>
