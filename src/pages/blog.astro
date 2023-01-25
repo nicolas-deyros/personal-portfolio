@@ -14,31 +14,52 @@ const posts = (await Astro.glob('./blog/*.{md,mdx}')).sort(
 <!DOCTYPE html>
 <html lang="en">
 	<head></head>
-	<body>
+	<body class="flex flex-col min-h-screen">
 		<Header />
 		<main class="mt-20 h-full">
 			<Container>
 				<section>
-					<ul>
-						{
-							posts.map(post => (
-								<li>
-									<time datetime={post.frontmatter.pubDate}>
-										{new Date(post.frontmatter.pubDate).toLocaleDateString(
-											'en-us',
-											{
-												year: 'numeric',
-												month: 'short',
-												day: 'numeric',
-											},
-										)}
-									</time>
-									<p>{post.frontmatter.excerpt}</p>
-									<a href={post.url}>{post.frontmatter.title}</a>
-								</li>
-							))
-						}
-					</ul>
+					{
+						posts.map(post => (
+							<>
+								<article class="mb-3">
+									<header>
+										<a
+											href={post.frontmatter.tag}
+											rel="prefetch"
+											class="text-slate-500 font-bold lowercase text-xs my-3">
+											#{post.frontmatter.tag}
+										</a>
+										<h2 class="text-slate-700 font-bold text-xl">
+											{post.frontmatter.title}
+										</h2>
+										<time
+											datetime={post.frontmatter.pubDate}
+											class="font-medium text-xs">
+											{new Date(post.frontmatter.pubDate).toLocaleDateString(
+												'en-us',
+												{
+													year: 'numeric',
+													month: 'long',
+													day: 'numeric',
+												},
+											)}
+										</time>
+									</header>
+									<p class="mb-3 text-lg truncate">
+										{post.frontmatter.excerpt}
+									</p>
+									<a
+										href={post.url}
+										rel="prefetch"
+										class="mt-2 px-2 py-1 border-2 border-slate-400 font-medium">
+										Read More
+									</a>
+								</article>
+								<hr class="my-3" />
+							</>
+						))
+					}
 				</section>
 			</Container>
 		</main>
