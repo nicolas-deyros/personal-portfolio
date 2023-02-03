@@ -1,11 +1,15 @@
 ---
-layout: '../../layouts/BlogPost.astro'
-title: 'Relative Mobile Conversion Rate Dashboard'
-description: 'Lorem ipsum dolor sit amet'
-excerpt: 'Breve resumen de mis actividades'
-pubDate: 'Mar 16 2020'
-heroImage: 'https://media.licdn.com/dms/image/C4E12AQF7iDZQA4H6jg/article-cover_image-shrink_600_2000/0/1584121971770?e=1680134400&v=beta&t=tK59zpzO_beqEbLELJEQiVa9IbRrWu7C6y37m2izsuM'
-tags: ['dashboard', 'successes']
+title: Relative Mobile Conversion Rate Dashboard
+date: Jul 08 2022
+author: Nicolas Deyros
+image:
+  {
+    src: 'https://media.licdn.com/dms/image/C4E12AQF7iDZQA4H6jg/article-cover_image-shrink_600_2000/0/1584121971770?e=1680134400&v=beta&t=tK59zpzO_beqEbLELJEQiVa9IbRrWu7C6y37m2izsuM',
+    alt: 'A picture of a coder',
+  }
+description: Have you ever wondered what the most important items of life are? Well, wonder no more!
+draft: false
+category: Dashboard
 ---
 
 In a really interesting post [**The value of speed**](https://web.dev/value-of-speed/), written by [Lina Hansson](https://web.dev/authors/linahansson), she develops the concept of **Relative Mobile Conversion Rate (Rel mCvR)**.

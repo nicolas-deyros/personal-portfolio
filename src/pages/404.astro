@@ -1,0 +1,17 @@
+---
+// component imports
+import Link from '../components/Link/Link.astro'
+import Layout from '../layouts/Layout.astro'
+---
+
+<Layout title="Page Not Found">
+	<div class="grid place-items-center h-full">
+		<div>
+			<h1 class="text-6xl">404</h1>
+			<h3 class="text-2xl">Welp, this is awkward!</h3>
+			<p>We seem to have misplaced something…</p>
+
+			<Link href="/" text="Go Home" icon="jam:home-f" />
+		</div>
+	</div>
+</Layout>

@@ -17,7 +17,14 @@ import vercel from '@astrojs/vercel/serverless'
 
 // https://astro.build/config
 export default defineConfig({
-	integrations: [tailwind(), image(), prefetch(), mdx()],
+	integrations: [
+		tailwind(),
+		image({
+			serviceEntryPoint: '@astrojs/image/sharp',
+		}),
+		prefetch(),
+		mdx(),
+	],
 	output: 'server',
 	adapter: vercel(),
 })

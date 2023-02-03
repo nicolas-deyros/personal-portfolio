@@ -1,15 +1,15 @@
 ---
-import { Picture } from '@astrojs/image/components'
+import { Image } from '@astrojs/image/components'
 ---
 
 <div class="flex flex-col items-center justify-center w-[300px] md:w-full">
-	<Picture
+	<Image
 		src={import('../assets/me.jpg')}
-		widths={[200, 400, 800]}
-		sizes="(max-width: 100px) 50vw, 350px"
-		formats={['avif', 'jpeg', 'png', 'webp']}
+		width={367}
+		height={412}
 		alt="Nicolas Deyros avatar"
-		aspectRatio="1:1"
+		format="webp"
+		fit={'fill'}
 	/>
 
 	<h1

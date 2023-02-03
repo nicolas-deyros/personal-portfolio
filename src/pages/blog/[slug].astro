@@ -1,0 +1,18 @@
+---
+import { getEntryBySlug } from 'astro:content'
+
+const { slug } = Astro.params
+const entry = await getEntryBySlug('blog', slug)
+const { Content } = await entry.render()
+
+import Layout from '../../layouts/Layout.astro'
+import Section from '../../components/Section.astro'
+const { title, date, author, image, description, category } = entry.data
+---
+
+<Layout title={`Blog | ${title}`} {description}>
+	<Section>
+		<h1>{title}</h1>
+		<Content />
+	</Section>
+</Layout>
