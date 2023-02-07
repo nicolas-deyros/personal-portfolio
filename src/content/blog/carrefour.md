@@ -2,9 +2,10 @@
 layout: '../../layouts/BlogPost.astro'
 title: 'Carrefour'
 description: 'Lorem ipsum dolor sit amet'
-excerpt: 'Breve resumen de mis actividades'
-pubDate: 'Jul 08 2022'
-heroImage: '/placeholder-hero.jpg'
+excerpt: 'C4 Breve resumen de mis actividades'
+isDraft: false
+publishDate: 'Jul 08 2022'
+heroImage: { src: '/placeholder-hero.jpg', alt: 'hero image' }
 tags: ['c4', 'successes']
 ---
 

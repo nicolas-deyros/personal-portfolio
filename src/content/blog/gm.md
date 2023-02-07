@@ -2,10 +2,10 @@
 layout: '../../layouts/BlogPost.astro'
 title: 'General Motors'
 description: 'Lorem ipsum dolor sit amet'
-excerpt: 'Breve resumen de mis actividades'
-pubDate: 'Sept 08 2022'
-heroImage: '/placeholder-hero.jpg'
-tags: ["astro", "successes"]
+excerpt: 'GM Breve resumen de mis actividades'
+publishDate: 'Sept 08 2023'
+heroImage: { src: '/placeholder-hero.jpg', alt: 'hero image' }
+tags: ['astro', 'successes' ]
 ---
 
 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel obcaecati consequatur rerum animi, dolore accusantium et dolorum delectus provident. Optio explicabo quam perferendis mollitia ea quos quis amet aut nulla?
