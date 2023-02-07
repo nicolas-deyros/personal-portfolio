@@ -1,11 +1,11 @@
 ---
-layout: '../../layouts/BlogPost.astro'
-title: 'General Motors'
-description: 'Lorem ipsum dolor sit amet'
-excerpt: 'GM Breve resumen de mis actividades'
-publishDate: 'Sept 08 2023'
-heroImage: { src: '/placeholder-hero.jpg', alt: 'hero image' }
-tags: ['astro', 'successes' ]
+title: General Motor
+date: Aug 08 2022
+author: Darnell McClure
+image: { src: '/images/post-1.jpg', alt: 'A picture of a coder' }
+description: Have you ever wondered what the most important items of life are? Well, wonder no more!
+draft: false
+category: Business Case
 ---
 
 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel obcaecati consequatur rerum animi, dolore accusantium et dolorum delectus provident. Optio explicabo quam perferendis mollitia ea quos quis amet aut nulla?

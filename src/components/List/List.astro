@@ -1,20 +1,16 @@
 ---
-import { Icon } from 'astro-icon'
 import Link from '../Link/Link.astro'
 
-export interface Props {
-	link?: string
-	icon: string
-	href: string
-	target?: string
-	title?: string
-}
-
-const { href, icon, link, target, title } = Astro.props
+const { text, href, rel, icon, target, title } = Astro.props
 ---
 
 <li class="list-none flex justify-center items-center">
-	<Link href={href} target={target} rel="prefetch"
-		><Icon name={icon} class="h-5" title={title} />{link}</Link
-	>
+	<Link
+		href={href}
+		target={target}
+		rel={rel}
+		icon={icon}
+		title={title}
+		text={text}
+	/>
 </li>

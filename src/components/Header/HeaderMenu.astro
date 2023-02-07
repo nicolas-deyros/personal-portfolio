@@ -1,8 +1,22 @@
 ---
 import List from '../List/List.astro'
+import navData from '../../data/navData'
 ---
 
 <ul class="lg:flex lg:gap-3">
-	<List href="/" icon="jam:home-f" link="Home" title="Home" />
-	<List href="/blog" icon="jam:blogger" link="Blog" title="Blog" />
+	{
+		navData.map(item => (
+			<List
+				href={item.path}
+				icon={item.icon}
+				text={item.text}
+				title={item.text}
+				data-navLink
+			/>
+		))
+	}
 </ul>
+
+<script>
+	import '../../js/nav'
+</script>

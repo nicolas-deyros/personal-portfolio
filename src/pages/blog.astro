@@ -1,68 +1,55 @@
 ---
-import { getCollection } from 'astro:content'
+import { getCollection, CollectionEntry } from 'astro:content'
 
-import Header from '../components/Header/Header.astro'
-import Container from '../components/Container.astro'
-import Footer from '../components/Footer.astro'
+import Layout from '../layouts/Layout.astro'
+import Section from '../components/Section.astro'
+// import PostCard from '../components/Blog/PostCard.astro'
 
-const blogEntries = await getCollection('blog', ({ data }) => {
-	return !data.isDraft && data.publishDate < new Date()
+// import { formatBlogPosts } from '../js/utils'
+
+// const allPosts = await getCollection('blog')
+// const formattedPosts: CollectionEntry<'blog'>[] = formatBlogPosts(allPosts, {
+// 	limit: 3,
+// })
+const allPosts = await getCollection('blog', ({ data }) => {
+	return data.draft !== true
 })
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-	<head></head>
-	<body class="flex flex-col min-h-screen">
-		<Header />
-		<main class="mt-20 h-full">
-			<Container>
-				<section>
-					{
-						blogEntries.map(blogPostEntry => (
-							<>
-								<>
-									<article class="mb-3">
-										<header>
-											{blogPostEntry.data.tags.map(tag => (
-												<span class="text-slate-500 font-bold lowercase text-xs my-3">
-													#{tag}
-												</span>
-											))}
-
-											<h2 class="text-slate-700 font-bold text-xl">
-												{blogPostEntry.data.title}
-											</h2>
-											<time
-												datetime={blogPostEntry.data.publishDate}
-												class="font-medium text-xs">
-												{new Date(
-													blogPostEntry.data.publishDate,
-												).toLocaleDateString('en-us', {
-													year: 'numeric',
-													month: 'long',
-													day: 'numeric',
-												})}
-											</time>
-										</header>
-										<p class="mb-3 text-lg truncate">
-											{blogPostEntry.data.excerpt}
-										</p>
-										<a
-											href={`/blog/${blogPostEntry.slug}`}
-											rel="prefetch"
-											class="mt-2 px-2 py-1 border-2 border-slate-400 font-medium">
-											Read More
-										</a>
-									</article>
-									<hr class="my-3" />
-								</>
-							</>
-						))
-					}
-				</section>
-			</Container>
-		</main>
-		<Footer />
-	</body>
-</html>
+<Layout title="Blog">
+	<Section ariaLabel="New Blog Posts">
+		<h2 class="w-full text-left text-4xl">New Blog Posts</h2>
+		{
+			allPosts.map(post => (
+				<>
+					<article class="mb-3 w-full">
+						<header>
+							<a
+								href={`/tags/${post.data.category}`}
+								rel="prefetch"
+								class="text-slate-500 font-bold lowercase text-xs my-3">
+								#{post.data.category}
+							</a>
+							<h2 class="text-slate-700 font-bold text-xl">
+								{post.data.title}
+							</h2>
+							<time datetime={post.data.date} class="font-medium text-xs">
+								{new Date(post.data.date).toLocaleDateString('en-us', {
+									year: 'numeric',
+									month: 'long',
+									day: 'numeric',
+								})}
+							</time>
+						</header>
+						<a
+							href={`/blog/${post.slug}/`}
+							rel="prefetch"
+							class="mt-2 px-2 py-1 border-2 border-slate-400 font-medium">
+							Read More
+						</a>
+					</article>
+				</>
+			))
+		}
+	</Section>
+</Layout>

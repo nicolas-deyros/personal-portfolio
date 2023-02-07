@@ -1,12 +1,18 @@
 ---
-import Container from './Container.astro'
-
 const today = new Date()
 ---
 
 <footer
-	class="w-full mt-auto py-3 bg-slate-200 flex justify-center items-center text-slate-500">
-	<Container>
-		&copy; {today.getFullYear()} All rights reserved.
-	</Container>
+	class="w-full mt-auto py-3 bg-slate-200 flex justify-center items-center text-slate-500 gap-5 flex-col md:flex-row">
+	<span>&copy; {today.getFullYear()} All rights reserved.</span>
+	<span>
+		<a href="https://astro.build">
+			<img
+				src="https://astro.badg.es/v1/built-with-astro.svg"
+				alt="Built with Astro"
+				width="150"
+				height="27.5"
+			/>
+		</a>
+	</span>
 </footer>
