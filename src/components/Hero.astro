@@ -11,14 +11,18 @@ import { Image } from '@astrojs/image/components'
 		format="webp"
 		fit={'fill'}
 	/>
-
-	<h1 class="text-3xl md:text-5xl lg:text-7xl text-center leading-none">
-		<span
-			class="txt-type font-semibold text-slate-700"
-			data-wait="3000"
-			data-words='["Developer", "Project Manager", "Advertiser"]'>
-		</span>
-	</h1>
+	<div class="h-7 md:h-12 lg:h-20">
+		<h1
+			class="text-3xl md:text-5xl lg:text-7xl text-center leading-none"
+			aria-label="Developer, Project Manager, Advertiser">
+			<span
+				class="txt-type font-semibold text-slate-700"
+				data-wait="3000"
+				data-words='["Developer", "Project Manager", "Advertiser"]'
+				aria-hidden="true">
+			</span>
+		</h1>
+	</div>
 	<h3 class="txt my-2 text-xl md:text-2xl lg:text-3xl text-slate-500">
 		a.k.a Problem solver
 	</h3>

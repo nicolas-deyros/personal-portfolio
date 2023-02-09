@@ -6,23 +6,34 @@ interface Props extends HTMLAttributes<'a'> {
 	href: string
 	rel?: 'prefetch' | 'nofollow prefetch'
 	icon?: string
+	class?: string
 	target?: '_self' | '_blank'
 	title?: string
-	classes?: string
 }
 
 const {
 	text,
 	href,
 	rel = 'prefetch',
+	class: className,
 	icon,
 	target,
 	title,
-	classes,
 	...props
 } = Astro.props
+const isActive = href === Astro.url.pathname.replace(/\/$/, '')
 ---
 
-<a href={href} rel={rel} title={title} class={classes} {...props}>
+<a
+	href={href}
+	rel={rel}
+	title={title}
+	class:list={[
+		'flex justify-center items-center font-semibold  hover:text-slate-300/50 gap-1',
+		{ 'text-slate-300/50 lg:underline lg:underline-offset-2': isActive },
+		{ 'text-slate-300/100': !isActive },
+		{ ...props },
+	]}
+	{...props}>
 	{icon ? <Icon name={icon} class="h-5" /> : ''}<span>{text}</span>
 </a>
