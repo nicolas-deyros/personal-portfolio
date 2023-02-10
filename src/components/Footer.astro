@@ -1,4 +1,6 @@
 ---
+import Link from './Link/Link.astro'
+
 const today = new Date()
 ---
 
@@ -6,13 +8,13 @@ const today = new Date()
 	class="w-full mt-auto py-3 bg-slate-200 flex justify-center items-center text-slate-500 gap-5 flex-col md:flex-row">
 	<span>&copy; {today.getFullYear()} All rights reserved.</span>
 	<span>
-		<a href="https://astro.build">
-			<img
-				src="https://astro.badg.es/v1/built-with-astro.svg"
-				alt="Built with Astro"
-				width="150"
-				height="27.5"
-			/>
-		</a>
+		<Link
+			href={`https://astro.build`}
+			rel={`nofollow prefetch`}
+			title={`Site build with 🚀Astro`}
+			text={`Astro`}
+			icon={`ic:baseline-rocket-launch`}
+			className="flex justify-center items-center"
+		/>
 	</span>
 </footer>

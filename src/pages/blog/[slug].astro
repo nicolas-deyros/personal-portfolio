@@ -2,7 +2,6 @@
 import { getEntryBySlug } from 'astro:content'
 
 const { slug } = Astro.params
-console.log(slug)
 const entry = await getEntryBySlug('blog', slug)
 const { Content } = await entry.render()
 
