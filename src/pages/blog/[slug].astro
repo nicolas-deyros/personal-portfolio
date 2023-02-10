@@ -2,6 +2,7 @@
 import { getEntryBySlug } from 'astro:content'
 
 const { slug } = Astro.params
+console.log(slug)
 const entry = await getEntryBySlug('blog', slug)
 const { Content } = await entry.render()
 
@@ -12,7 +13,8 @@ const { title, date, author, image, description, category } = entry.data
 
 <Layout title={`Blog | ${title}`} {description}>
 	<Section>
-		<h1>{title}</h1>
+		<h1>{entry.data.title}</h1>
+		<span>{entry.data.category}</span>
 		<Content />
 	</Section>
 </Layout>
