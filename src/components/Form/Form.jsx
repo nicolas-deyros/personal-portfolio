@@ -33,14 +33,14 @@ const Basic = () => (
 				isSubmitting,
 				/* and other goodies */
 			}) => (
-				<form onSubmit={handleSubmit}>
+				<form onSubmit={handleSubmit} className="bg-red-600 flex flex-col">
 					<input
 						type="email"
 						name="email"
 						onChange={handleChange}
 						onBlur={handleBlur}
 						value={values.email}
-						class="bg-red-600"
+						className="bg-red-600 rounded-lg bg-transparent"
 					/>
 					{errors.email && touched.email && errors.email}
 					<input
