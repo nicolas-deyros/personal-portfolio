@@ -2,8 +2,6 @@ import { useRef } from 'react'
 import { useFormik } from 'formik'
 import emailjs, { send } from '@emailjs/browser'
 import { BasicSchema } from '../../schemas/index.jsx'
-import { GoMention, GoPencil } from 'react-icons/go'
-import { MdPerson } from 'react-icons/md'
 
 const ContactUs = () => {
 	const from = useRef()
@@ -59,13 +57,14 @@ const ContactUs = () => {
 								? 'inline-flex items-center px-3 text-sm text-red-900 bg-red-200 border border-r-0 border-red-300 rounded-l-md '
 								: 'inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600'
 						}>
-						<MdPerson
+						<span
 							className={
 								formik.errors.email && formik.touched.email
 									? 'w-5 h-5 text-red-500'
 									: 'w-5 h-5 text-gray-500'
-							}
-						/>
+							}>
+							🧑
+						</span>
 					</span>
 					<input
 						id="name"
@@ -99,13 +98,14 @@ const ContactUs = () => {
 								? 'inline-flex items-center px-3 text-sm text-red-900 bg-red-200 border border-r-0 border-red-300 rounded-l-md '
 								: 'inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600'
 						}>
-						<GoMention
+						<span
 							className={
 								formik.errors.email && formik.touched.email
 									? 'w-5 h-5 text-red-500'
 									: 'w-5 h-5 text-gray-500'
-							}
-						/>
+							}>
+							@
+						</span>
 					</span>
 					<input
 						id="email"
@@ -151,13 +151,14 @@ const ContactUs = () => {
 								? 'inline-flex items-center px-3 text-sm text-red-900 bg-red-200 border border-l-0 border-red-300 rounded-r-md '
 								: 'inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-l-0 border-gray-300 rounded-r-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600'
 						}>
-						<GoPencil
+						<span
 							className={
 								formik.errors.email && formik.touched.email
 									? 'w-5 h-5 text-red-500'
 									: 'w-5 h-5 text-gray-500'
-							}
-						/>
+							}>
+							&#x270E;
+						</span>
 					</span>
 				</div>
 				{formik.errors.msg && formik.touched.msg && (
