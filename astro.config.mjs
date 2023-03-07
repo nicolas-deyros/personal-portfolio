@@ -24,5 +24,5 @@ export default defineConfig({
     serviceEntryPoint: '@astrojs/image/sharp'
   }), prefetch(), mdx(), react()],
   output: 'server',
-  adapter: vercel()
+  adapter: vercel(analytics: true)
 });

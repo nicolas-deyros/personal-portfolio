@@ -5,6 +5,6 @@ export const get = () =>
 		title: 'Nicolas Deyros| Blog',
 		description: 'Nicolas Deyros | Personal Portfolio',
 		site: 'https://personal-portfolio-ten-self.vercel.app/',
-		items: import.meta.glob('./**/*.md'),
+		items: import.meta.glob('./**/*.mdx'),
 		customData: `<language>en-us</language>`,
 	})
