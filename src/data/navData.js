@@ -9,6 +9,11 @@ const navData = [
 		path: '/blog',
 		icon: 'jam:blogger',
 	},
+	{
+		text: 'Contact',
+		path: '/contact',
+		icon: 'ic:baseline-alternate-email',
+	},
 ]
 
 export default navData

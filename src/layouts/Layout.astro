@@ -11,7 +11,7 @@ const { title, description, image, data, robots } = Astro.props
 	<Head {title} {description} {image} {data} {robots} />
 	<body class="font-sans bg-white flex flex-col h-screen">
 		<Header />
-		<main class="mt-20 flex-grow container mx-auto px-10">
+		<main class="mt-20 flex-grow container mx-auto px-5 md:px-10">
 			<slot />
 		</main>
 		<Footer />

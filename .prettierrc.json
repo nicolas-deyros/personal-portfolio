@@ -17,7 +17,8 @@
         "*.md",
         "*.mdx",
         "*.toml",
-        "*.yml"
+        "*.yml",
+        "*.jsx"
       ],
       "options": {
         "useTabs": false
