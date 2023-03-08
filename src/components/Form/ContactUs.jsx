@@ -242,7 +242,7 @@ const ContactUs = () => {
                   fill="currentFill"
                 />
               </svg>
-              Processing...
+              Processing..
             </span>
           ) : (
             <span className="flex gap-3 justify-center items-center">
