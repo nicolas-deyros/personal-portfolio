@@ -2,9 +2,11 @@ import { useState } from 'react'
 import { useFormik } from 'formik'
 import emailjs, { send } from '@emailjs/browser'
 import { BasicSchema } from '../../schemas/index.jsx'
+import { motion } from 'framer-motion'
 
 const ContactUs = () => {
   const [formSubmit, FormSubmitting] = useState(false)
+
   const initialValues = {
     name: '',
     email: '',
@@ -29,7 +31,7 @@ const ContactUs = () => {
       onSubmittingProps.resetForm()
       await setTimeout(() => {
         FormSubmitting(false)
-      }, 3000)
+      }, 5000)
     } catch (error) {
       console.error(error)
     }
@@ -46,9 +48,13 @@ const ContactUs = () => {
   return (
     <div className="w-full h-full flex flex-col items-center justify-center">
       {formSubmit ? (
-        <h3 className="text-lg font-bold text-green-300">
+        <motion.h3
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 2, ease: 'easeInOut', delay: 0.2 }}
+          className="text-lg font-bold text-green-300">
           Thanks, I'll be in touch
-        </h3>
+        </motion.h3>
       ) : (
         <h3 className="text-lg font-bold text-gray-500">
           Get in touch with me:
@@ -95,9 +101,13 @@ const ContactUs = () => {
           />
         </div>
         {formik.errors.name && formik.touched.name && (
-          <span className="text-red-500 font-semibold text-sm">
+          <motion.span
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="text-red-500 font-semibold text-sm">
             {formik.errors.name}
-          </span>
+          </motion.span>
         )}
         <label
           className="block text-gray-700 text-sm font-bold"
@@ -136,9 +146,13 @@ const ContactUs = () => {
           />
         </div>
         {formik.errors.email && formik.touched.email && (
-          <span className="text-red-500 font-semibold text-sm">
+          <motion.span
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="text-red-500 font-semibold text-sm">
             {formik.errors.email}
-          </span>
+          </motion.span>
         )}
         <label className="block text-gray-700 text-sm font-bold" htmlFor="msg">
           Your Message
@@ -175,20 +189,25 @@ const ContactUs = () => {
           </span>
         </div>
         {formik.errors.msg && formik.touched.msg && (
-          <span className="text-red-500 font-semibold text-sm">
+          <motion.span
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="text-red-500 font-semibold text-sm">
             {formik.errors.msg}
-          </span>
+          </motion.span>
         )}
-        <input
+        <button
           type="submit"
           value="Send"
           disabled={formik.isSubmitting && !formik.isValid}
           className={
             formSubmit || !formik.isValid
-              ? 'text-white w-1/3 md:w-1/5  bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center opacity-50'
+              ? 'text-white w-1/3 md:w-1/5  bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center opacity-50'
               : 'text-white w-1/3 md:w-1/5  bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center'
-          }
-        />
+          }>
+          {formSubmit ? 'Sending' : 'Send'}
+        </button>
       </form>
     </div>
   )
