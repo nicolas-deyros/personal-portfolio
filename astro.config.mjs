@@ -5,7 +5,9 @@ import prefetch from '@astrojs/prefetch'
 import mdx from '@astrojs/mdx'
 import vercel from '@astrojs/vercel/serverless'
 import react from '@astrojs/react'
+import partytown from '@astrojs/partytown'
 
+// https://astro.build/config
 export default defineConfig({
 	integrations: [
 		tailwind(),
@@ -15,6 +17,11 @@ export default defineConfig({
 		prefetch(),
 		mdx(),
 		react(),
+		partytown({
+			config: {
+				forward: ['dataLayer.push'],
+			},
+		}),
 	],
 	output: 'server',
 	adapter: vercel({
