@@ -55,6 +55,14 @@ const ContactUs = () => {
           className="text-lg font-bold text-green-300">
           Thanks, I'll be in touch
         </motion.h3>
+      ) : !formik.isValid ? (
+        <motion.h3
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2 }}
+          className="text-lg font-bold text-red-500">
+          Review your input in order to proceed
+        </motion.h3>
       ) : (
         <h3 className="text-lg font-bold text-gray-500">
           Get in touch with me:
@@ -206,7 +214,7 @@ const ContactUs = () => {
               ? 'text-white w-1/3 md:w-1/5  bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center opacity-50'
               : 'text-white w-1/3 md:w-1/5  bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center'
           }>
-          {formSubmit ? 'Sending' : 'Send'}
+          {formSubmit ? 'Sending' : !formik.isValid ? 'Block' : 'Send'}
         </button>
       </form>
     </div>
