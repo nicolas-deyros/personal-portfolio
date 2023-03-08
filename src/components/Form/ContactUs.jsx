@@ -3,13 +3,8 @@ import { useFormik } from 'formik'
 import emailjs, { send } from '@emailjs/browser'
 import { BasicSchema } from '../../schemas/index.jsx'
 import { motion } from 'framer-motion'
-import {
-  BsFillRocketTakeoffFill,
-  BsFillSendFill,
-  BsPencilSquare,
-  BsPersonCircle,
-  BsEnvelopeAtFill,
-} from 'react-icons/bs'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 
 const ContactUs = () => {
   const [formSubmit, FormSubmitting] = useState(false)
@@ -97,7 +92,7 @@ const ContactUs = () => {
                   ? 'w-5 h-5 text-red-500 flex justify-center items-center'
                   : 'w-5 h-5 text-gray-100 flex justify-center items-center'
               }>
-              <BsPersonCircle />
+              <FontAwesomeIcon icon={faCoffee} />
             </span>
           </span>
           <input
@@ -142,7 +137,7 @@ const ContactUs = () => {
                   ? 'w-5 h-5 text-red-500 flex justify-center items-center'
                   : 'w-5 h-5 text-gray-100 flex justify-center items-center'
               }>
-              <BsEnvelopeAtFill />
+              {/* <BsEnvelopeAtFill />*/}
             </span>
           </span>
           <input
@@ -199,7 +194,7 @@ const ContactUs = () => {
                   ? 'w-5 h-5 text-red-500 flex justify-center items-center'
                   : 'w-5 h-5 text-gray-100 flex justify-center items-center'
               }>
-              <BsPencilSquare />
+              {/* <BsPencilSquare /> */}
             </span>
           </span>
         </div>
@@ -223,7 +218,7 @@ const ContactUs = () => {
           }>
           {formSubmit ? (
             <span className="flex gap-3 justify-center items-center">
-              <BsFillRocketTakeoffFill /> Sending
+              {/* <BsFillRocketTakeoffFill /> Sending */} Sending
             </span>
           ) : !formik.isValid ? (
             <span className="flex gap-3 justify-center items-center">
@@ -246,7 +241,7 @@ const ContactUs = () => {
             </span>
           ) : (
             <span className="flex gap-3 justify-center items-center">
-              <BsFillSendFill /> Send
+              {/* <BsFillSendFill /> Send */} Send
             </span>
           )}
         </button>
