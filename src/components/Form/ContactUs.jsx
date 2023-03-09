@@ -4,8 +4,14 @@ import emailjs, { send } from '@emailjs/browser'
 import { BasicSchema } from '../../schemas/index.jsx'
 import { motion } from 'framer-motion'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
-
+import {
+  faUserAstronaut,
+  faArrowRight,
+  faPenToSquare,
+  faAt,
+  faPaperPlane,
+  faRocket,
+} from '@fortawesome/free-solid-svg-icons'
 const ContactUs = () => {
   const [formSubmit, FormSubmitting] = useState(false)
 
@@ -92,7 +98,7 @@ const ContactUs = () => {
                   ? 'w-5 h-5 text-red-500 flex justify-center items-center'
                   : 'w-5 h-5 text-gray-100 flex justify-center items-center'
               }>
-              <FontAwesomeIcon icon={faCoffee} />
+              <FontAwesomeIcon icon={faUserAstronaut} />
             </span>
           </span>
           <input
@@ -137,7 +143,7 @@ const ContactUs = () => {
                   ? 'w-5 h-5 text-red-500 flex justify-center items-center'
                   : 'w-5 h-5 text-gray-100 flex justify-center items-center'
               }>
-              {/* <BsEnvelopeAtFill />*/}
+              <FontAwesomeIcon icon={faAt} />
             </span>
           </span>
           <input
@@ -194,7 +200,7 @@ const ContactUs = () => {
                   ? 'w-5 h-5 text-red-500 flex justify-center items-center'
                   : 'w-5 h-5 text-gray-100 flex justify-center items-center'
               }>
-              {/* <BsPencilSquare /> */}
+              <FontAwesomeIcon icon={faPenToSquare} />
             </span>
           </span>
         </div>
@@ -218,7 +224,7 @@ const ContactUs = () => {
           }>
           {formSubmit ? (
             <span className="flex gap-3 justify-center items-center">
-              {/* <BsFillRocketTakeoffFill /> Sending */} Sending
+              <FontAwesomeIcon icon={faRocket} /> Sending
             </span>
           ) : !formik.isValid ? (
             <span className="flex gap-3 justify-center items-center">
@@ -237,11 +243,11 @@ const ContactUs = () => {
                   fill="currentFill"
                 />
               </svg>
-              Processing..
+              Processing...
             </span>
           ) : (
             <span className="flex gap-3 justify-center items-center">
-              {/* <BsFillSendFill /> Send */} Send
+              <FontAwesomeIcon icon={faPaperPlane} /> Send
             </span>
           )}
         </button>
