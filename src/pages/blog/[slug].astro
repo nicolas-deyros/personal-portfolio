@@ -1,19 +1,46 @@
 ---
-import { getEntryBySlug } from 'astro:content'
+export const prerender = true
+import { CollectionEntry, getCollection, getEntryBySlug } from 'astro:content'
 
-const { slug } = Astro.params
-const entry = await getEntryBySlug('blog', slug)
-const { Content } = await entry.render()
+// const { slug } = Astro.params
+// const entry = await getEntryBySlug('blog', slug)
+// const { Content } = await entry.render()
+
+export async function getStaticPaths() {
+	const blog = await getCollection('blog')
+	return blog.map(post => ({
+		params: { slug: post.slug },
+		props: { post },
+	}))
+}
+
+type Props = {
+	post: CollectionEntry<'blog'>
+}
+const { post } = Astro.props
+const { data, render } = post
+const { Content } = await render()
 
 import Layout from '../../layouts/Layout.astro'
 import Section from '../../components/Section.astro'
-const { title, date, author, image, description, category } = entry.data
+const { title, date, author, image, description, category } = data
 ---
 
 <Layout title={`Blog | ${title}`} {description}>
 	<Section>
-		<h1>{entry.data.title}</h1>
-		<span>{entry.data.category}</span>
+		<h1>{title}</h1>
+		<span>{category}</span>
+		<span>
+			<time datetime={date} class="font-medium text-xs">
+				{
+					new Date(date).toLocaleDateString('en-us', {
+						year: 'numeric',
+						month: 'long',
+						day: 'numeric',
+					})
+				}
+			</time>
+		</span>
 		<Content />
 	</Section>
 </Layout>

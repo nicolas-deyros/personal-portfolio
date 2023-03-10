@@ -1,0 +1,125 @@
+---
+export const prerender = true
+import { GetStaticPathsOptions, Page } from 'astro'
+import { CollectionEntry, getCollection } from 'astro:content'
+
+import { Icon } from 'astro-icon'
+
+import Layout from '../../layouts/Layout.astro'
+import Section from '../../components/Section.astro'
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+	const posts = await getCollection('blog')
+	const sortedPosts = posts.sort(
+		(a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) =>
+			b.data.date.getTime() - a.data.date.getTime(),
+	)
+	return paginate(sortedPosts, { pageSize: 6 })
+}
+const { page } = Astro.props as { page: Page<CollectionEntry<'blog'>> }
+---
+
+<Layout title="Blog">
+	<Section ariaLabel="New Blog Posts">
+		<h2 class="w-full text-center text-4xl my-3 text-slate-800 font-bold">
+			New Blog Posts
+		</h2>
+
+		<div
+			class="grid grid-cols-1 w-full lg:grid-cols-2 gap-3 mt-3 items-center justify-items-center">
+			{
+				page.data.map(post => (
+					<article class="flex flex-col lg:flex-row text gap-1 rounded-lg shadow w-full lg:max-w-xl border border-slate-900 bg-slate-700">
+						<img
+							class="object-cover lg:rounded-t-lg h-full lg:h-auto lg:w-1/2 rounded-t-lg lg:rounded-l-lg"
+							src={post.data.image.src}
+							alt={post.data.image.alt}
+						/>
+						<div class="flex flex-col justify-between p-3 gap-3 text-slate-100">
+							<header>
+								<h5 class="mb-2 text-lg font-bold tracking-tigh">
+									{post.data.title}
+								</h5>
+							</header>
+
+							<p>
+								Lorem ipsum dolor sit amet consectetur adipisicing elit.
+								Inventore facere culpa veniam excepturi molestiae dicta quaerat
+								autem. Saepe tenetur quaerat cum obcaecati aliquid deleniti non
+								autem odio illum, beatae vero.
+							</p>
+							<footer class="grid grid-cols-1 text-center md:text-left md:grid-cols-2 gap-3 ">
+								<div class="flex flex-col justify-between font-medium text-xs gap-1">
+									<time datetime={post.data.date}>
+										{new Date(post.data.date).toLocaleDateString('en-us', {
+											year: 'numeric',
+											month: 'long',
+											day: 'numeric',
+										})}
+									</time>
+									<span>Nicolás Deyros</span>
+									<span>
+										<a
+											href={`/blog/tags/${post.data.category}`}
+											rel="prefetch"
+											class="text-slate-50 font-bold lowercase my-3">
+											#{post.data.category}
+										</a>
+									</span>
+								</div>
+								<div class="flex justify-center items-center">
+									<a
+										href={`/blog/${post.slug}/`}
+										rel="prefetch"
+										class="mt-2 px-2 py-1 border-1 rounded-lg bg-slate-50 border-slate-100 text-slate-800 hover:bg-slate-800 hover:border-slate-900 hover:text-slate-50 font-medium">
+										Read More
+									</a>
+								</div>
+							</footer>
+						</div>
+					</article>
+				))
+			}
+		</div>
+
+		<div class="flex gap-3 justify-center items-center my-3 text-slate-700">
+			{
+				page.start ? (
+					<a href="/blog" title="First Page">
+						<Icon class="h-5" name="ic:round-skip-previous" />
+					</a>
+				) : null
+			}
+			{
+				page.url.prev ? (
+					<a href={page.url.prev} title="Previous Page">
+						<Icon class="h-5" name="ic:round-navigate-before" />
+					</a>
+				) : null
+			}
+			{
+				page.url.current ? (
+					<span class="font-bold">
+						{page.currentPage} of {page.lastPage}
+					</span>
+				) : null
+			}
+			{
+				page.url.next ? (
+					<a href={page.url.next} title="Next">
+						<Icon class="h-5" name="ic:round-navigate-next" />
+					</a>
+				) : null
+			}
+			{
+				page.currentPage === page.lastPage ? (
+					''
+				) : page.lastPage ? (
+					<a href={`/blog/${page.lastPage}`} title="Last Page">
+						<Icon class="h-5" name="ic:round-skip-next" />
+					</a>
+				) : null
+			}
+		</div>
+	</Section>
+</Layout>
