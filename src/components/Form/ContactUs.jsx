@@ -28,10 +28,7 @@ const ContactUs = () => {
   }
 
   const handleSubmit = async (value, onSubmittingProps, e) => {
-    // console.log(onSubmittingProps)
     try {
-      // await sendEmail(value)
-      // console.log(value)
       await setTimeout(() => {
         sendEmail(value)
       }, 3000)
@@ -51,11 +48,9 @@ const ContactUs = () => {
     validationSchema: BasicSchema,
   })
 
-  // console.log(formik.errors)
-
   return (
     <div className="w-full h-full flex flex-col items-center justify-center">
-      {formSubmit ? (
+      {formSubmit && (
         <motion.h3
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
@@ -63,7 +58,8 @@ const ContactUs = () => {
           className="text-lg font-bold text-green-300">
           Thanks, I'll be in touch
         </motion.h3>
-      ) : !formik.isValid ? (
+      )}
+      {!formik.isValid && (
         <motion.h3
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -71,13 +67,13 @@ const ContactUs = () => {
           className="text-lg font-bold text-red-500">
           Review your input in order to proceed
         </motion.h3>
-      ) : (
+      )}
+      {!formSubmit && formik.isValid && (
         <h3 className="text-lg font-bold text-gray-500">
           Get in touch with me:
         </h3>
       )}
 
-      {console.log('setSubmitting', formik.setSubmitting)}
       <form
         className="flex flex-col w-full md:w-2/3 mx-auto gap-1"
         onSubmit={formik.handleSubmit}
@@ -88,13 +84,13 @@ const ContactUs = () => {
         <div className="flex">
           <span
             className={
-              formik.errors.email && formik.touched.email
+              formik.errors.name && formik.touched.name
                 ? 'inline-flex items-center px-3 text-sm text-red-900 bg-red-200 border border-r-0 border-red-300 rounded-l-md '
                 : 'inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600'
             }>
             <span
               className={
-                formik.errors.email && formik.touched.email
+                formik.errors.name && formik.touched.name
                   ? 'w-5 h-5 text-red-500 flex justify-center items-center'
                   : 'w-5 h-5 text-gray-100 flex justify-center items-center'
               }>
@@ -179,7 +175,7 @@ const ContactUs = () => {
             name="msg"
             type="text"
             className={
-              formik.errors.name && formik.touched.name
+              formik.errors.msg && formik.touched.msg
                 ? 'bg-red-200 border border-red-300 text-red-900 text-sm border-r-0  rounded-l-md focus:ring-red-500 focus:border-red-500 block w-full p-2.5  placeholder-gray-700'
                 : 'bg-gray-50 border border-gray-300 text-gray-900 text-sm border-r-0  rounded-l-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  placeholder-gray-700'
             }
@@ -190,13 +186,13 @@ const ContactUs = () => {
           />
           <span
             className={
-              formik.errors.email && formik.touched.email
+              formik.errors.msg && formik.touched.msg
                 ? 'inline-flex items-center px-3 text-sm text-red-900 bg-red-200 border border-l-0 border-red-300 rounded-r-md '
                 : 'inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-l-0 border-gray-300 rounded-r-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600'
             }>
             <span
               className={
-                formik.errors.email && formik.touched.email
+                formik.errors.msg && formik.touched.msg
                   ? 'w-5 h-5 text-red-500 flex justify-center items-center'
                   : 'w-5 h-5 text-gray-100 flex justify-center items-center'
               }>

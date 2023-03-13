@@ -7,7 +7,10 @@ export const BasicSchema = Yup.object().shape({
   name: Yup.string()
     .min(4, 'Name must be at least 4 characters long')
     .max(50, 'Name must be no longer than 50 characters')
-    .matches(/^[a-zA-Z ]+$/, 'Name must only contain letters and spaces')
+    .matches(
+      /^[áéíóúÁÉÍÓÚñÑ\a-zA-Z ]+$/,
+      'Name must only contain letters and spaces',
+    )
     .required('Name is a required field and cannot be empty'),
   email: Yup.string()
     .email('Please enter a valid email')
