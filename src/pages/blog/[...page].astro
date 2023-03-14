@@ -3,10 +3,9 @@ export const prerender = true
 import { GetStaticPathsOptions, Page } from 'astro'
 import { CollectionEntry, getCollection } from 'astro:content'
 
-import { Icon } from 'astro-icon'
-
 import Layout from '../../layouts/Layout.astro'
 import Section from '../../components/Section.astro'
+import Pagination from '../../components/Pagination.astro'
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
 	const posts = await getCollection('blog')
@@ -86,45 +85,13 @@ const { page } = Astro.props as { page: Page<CollectionEntry<'blog'>> }
 				))
 			}
 		</div>
-
-		<div class="flex gap-3 justify-center items-center my-3 text-slate-700">
-			{
-				page.start ? (
-					<a href="/blog" title="First Page">
-						<Icon class="h-5" name="ic:round-skip-previous" />
-					</a>
-				) : null
-			}
-			{
-				page.url.prev ? (
-					<a href={page.url.prev} title="Previous Page">
-						<Icon class="h-5" name="ic:round-navigate-before" />
-					</a>
-				) : null
-			}
-			{
-				page.url.current ? (
-					<span class="font-bold">
-						{page.currentPage} of {page.lastPage}
-					</span>
-				) : null
-			}
-			{
-				page.url.next ? (
-					<a href={page.url.next} title="Next">
-						<Icon class="h-5" name="ic:round-navigate-next" />
-					</a>
-				) : null
-			}
-			{
-				page.currentPage === page.lastPage ? (
-					''
-				) : page.lastPage ? (
-					<a href={`/blog/${page.lastPage}`} title="Last Page">
-						<Icon class="h-5" name="ic:round-skip-next" />
-					</a>
-				) : null
-			}
-		</div>
+		<Pagination
+			current={page.currentPage}
+			startUrl={page.start}
+			prevUrl={page.url.prev}
+			nextUrl={page.url.next}
+			currentUrl={page.url.current}
+			lastUrl={page.lastPage}
+		/>
 	</Section>
 </Layout>

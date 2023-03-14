@@ -1,39 +1,45 @@
 ---
-// component imports
-import Link from "./Link.astro";
+import Link from './Link/Link.astro'
 
-const { prevUrl, nextUrl } = Astro.props;
+const { current, startUrl, prevUrl, nextUrl, currentUrl, lastUrl } = Astro.props
 ---
 
-<nav aria-label="Blog pages">
-  {
-    prevUrl && (
-      <Link
-        text="Previous"
-        href={prevUrl}
-        style="primary"
-        borderVisible={true}
-        isFilled={false}
-        icon={{
-          name: "tabler:arrow-big-left-line",
-          side: "left",
-        }}
-      />
-    )
-  }
-  {
-    nextUrl && (
-      <Link
-        text="Next"
-        href={nextUrl}
-        style="primary"
-        borderVisible={true}
-        isFilled={false}
-        icon={{
-          name: "tabler:arrow-big-right-line",
-          side: "right",
-        }}
-      />
-    )
-  }
-</nav>
+<div class="flex gap-3 justify-center items-center my-3 text-slate-700">
+	{
+		startUrl ? (
+			<Link href="/blog" icon="ic:round-skip-previous" title="First Page" />
+		) : null
+	}
+	{
+		prevUrl ? (
+			<Link
+				href={prevUrl}
+				icon="ic:round-navigate-before"
+				title="Previous Page"
+			/>
+		) : null
+	}
+	{
+		currentUrl ? (
+			<span class="font-bold">
+				{current} of {lastUrl}
+			</span>
+		) : null
+	}
+	{
+		nextUrl ? (
+			<Link href={nextUrl} icon="ic:round-navigate-next" title="Next Page" />
+		) : null
+	}
+	{
+		current === lastUrl ? (
+			''
+		) : lastUrl ? (
+			<Link
+				href={`/blog/${lastUrl}`}
+				icon="ic:round-skip-next"
+				title="Last Page"
+			/>
+		) : null
+	}
+</div>
