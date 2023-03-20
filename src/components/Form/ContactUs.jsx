@@ -78,14 +78,25 @@ const ContactUs = () => {
         className="flex flex-col w-full md:w-2/3 mx-auto gap-1"
         onSubmit={formik.handleSubmit}
         autoComplete="off">
-        <label className="block text-gray-700 text-sm font-bold" htmlFor="name">
+        <label
+          className={
+            formik.errors.name && formik.touched.name
+              ? 'block text-red-900 text-sm font-bold animate-shaking'
+              : 'block text-gray-700 text-sm font-bold'
+          }
+          htmlFor="name">
           Your Name
         </label>
-        <div className="flex">
+        <div
+          className={
+            formik.errors.name && formik.touched.name
+              ? 'flex animate-shaking'
+              : 'flex'
+          }>
           <span
             className={
               formik.errors.name && formik.touched.name
-                ? 'inline-flex items-center px-3 text-sm text-red-900 bg-red-200 border border-r-0 border-red-300 rounded-l-md '
+                ? 'inline-flex items-center px-3 text-sm text-red-900 bg-red-200 border-red-500 border border-r-0 rounded-l-md'
                 : 'inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600'
             }>
             <span
@@ -103,7 +114,7 @@ const ContactUs = () => {
             type="text"
             className={
               formik.errors.name && formik.touched.name
-                ? 'bg-red-200 border border-red-300 text-red-900 text-sm border-l-0 rounded-r-md focus:ring-red-500 focus:border-red-500 block w-full p-2.5  placeholder-gray-700'
+                ? 'bg-red-200 border border-red-500 text-red-900 text-sm border-l-0 rounded-r-md block w-full p-2.5 placeholder-red-900'
                 : 'bg-gray-50 border border-gray-300 text-gray-900 text-sm border-l-0 rounded-r-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  placeholder-gray-700'
             }
             placeholder="Your name goes here"
@@ -122,15 +133,24 @@ const ContactUs = () => {
           </motion.span>
         )}
         <label
-          className="block text-gray-700 text-sm font-bold"
+          className={
+            formik.errors.name && formik.touched.name
+              ? 'block text-red-900 text-sm font-bold animate-shaking'
+              : 'block text-gray-700 text-sm font-bold'
+          }
           htmlFor="email">
           Your Email
         </label>
-        <div className="flex">
+        <div
+          className={
+            formik.errors.name && formik.touched.name
+              ? 'flex animate-shaking'
+              : 'flex'
+          }>
           <span
             className={
               formik.errors.email && formik.touched.email
-                ? 'inline-flex items-center px-3 text-sm text-red-900 bg-red-200 border border-r-0 border-red-300 rounded-l-md '
+                ? 'inline-flex items-center px-3 text-sm text-red-900 bg-red-200 border-red-500 border border-r-0 rounded-l-md'
                 : 'inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600'
             }>
             <span
@@ -148,7 +168,7 @@ const ContactUs = () => {
             type="email"
             className={
               formik.errors.email && formik.touched.email
-                ? 'bg-red-200 border border-red-300 text-red-900 text-sm border-l-0  rounded-r-md focus:ring-red-500 focus:border-red-500 block w-full p-2.5  placeholder-gray-700'
+                ? 'bg-red-200 border border-red-500 text-red-900 text-sm border-l-0  rounded-r-md block w-full p-2.5  placeholder-red-900'
                 : 'bg-gray-50 border border-gray-300 text-gray-900 text-sm border-l-0  rounded-r-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  placeholder-gray-700'
             }
             placeholder="Here goes your email"
@@ -166,17 +186,28 @@ const ContactUs = () => {
             {formik.errors.email}
           </motion.span>
         )}
-        <label className="block text-gray-700 text-sm font-bold" htmlFor="msg">
+        <label
+          className={
+            formik.errors.name && formik.touched.name
+              ? 'block text-red-900 text-sm font-bold animate-shaking'
+              : 'block text-gray-700 text-sm font-bold'
+          }
+          htmlFor="msg">
           Your Message
         </label>
-        <div className="flex">
+        <div
+          className={
+            formik.errors.name && formik.touched.name
+              ? 'flex animate-shaking'
+              : 'flex'
+          }>
           <textarea
             id="msg"
             name="msg"
             type="text"
             className={
               formik.errors.msg && formik.touched.msg
-                ? 'bg-red-200 border border-red-300 text-red-900 text-sm border-r-0  rounded-l-md focus:ring-red-500 focus:border-red-500 block w-full p-2.5  placeholder-gray-700'
+                ? 'bg-red-200 border border-red-500 text-red-900 text-sm border-r-0  rounded-l-md block w-full p-2.5  placeholder-gray-900'
                 : 'bg-gray-50 border border-gray-300 text-gray-900 text-sm border-r-0  rounded-l-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  placeholder-gray-700'
             }
             placeholder="What would you like to say"
@@ -187,7 +218,7 @@ const ContactUs = () => {
           <span
             className={
               formik.errors.msg && formik.touched.msg
-                ? 'inline-flex items-center px-3 text-sm text-red-900 bg-red-200 border border-l-0 border-red-300 rounded-r-md '
+                ? 'inline-flex items-center px-3 text-sm text-red-900 bg-red-200 border border-l-0 border-red-500 rounded-r-md '
                 : 'inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-l-0 border-gray-300 rounded-r-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600'
             }>
             <span
