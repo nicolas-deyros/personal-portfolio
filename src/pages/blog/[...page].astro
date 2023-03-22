@@ -28,7 +28,7 @@ const { page } = Astro.props as { page: Page<CollectionEntry<'blog'>> }
 			class="grid grid-cols-1 w-full xl:grid-cols-2 gap-3 mt-3 items-center justify-items-center">
 			{
 				page.data.map(post => (
-					<article class="flex flex-col lg:flex-row text gap-1 rounded-lg shadow w-full lg:max-w-xl border border-slate-900 bg-slate-700">
+					<article class="flex flex-col lg:flex-row text gap-1 rounded-lg shadow w-full lg:max-w-xl border border-slate-900 bg-slate-700 hover:rotate-1">
 						<img
 							class="object-cover h-full lg:h-auto lg:w-1/2 rounded-t-lg lg:rounded-r-none lg:rounded-l-lg"
 							src={

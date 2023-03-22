@@ -4,7 +4,7 @@ export const get = () =>
 	rss({
 		title: 'Nicolas Deyros| Blog',
 		description: 'Nicolas Deyros | Personal Portfolio',
-		site: 'https://personal-portfolio-ten-self.vercel.app/',
+		site: 'https://ndeyros.vercel.app/',
 		items: import.meta.glob('./**/*.mdx'),
 		customData: `<language>en-us</language>`,
 	})
