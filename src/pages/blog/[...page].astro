@@ -39,7 +39,7 @@ const { page } = Astro.props as { page: Page<CollectionEntry<'blog'>> }
 							alt={post.data.image.alt}
 						/>
 
-						<div class="flex flex-col justify-between p-3 gap-3 text-slate-100">
+						<div class="flex flex-col lg:w-1/2 justify-between p-3 gap-3 text-slate-100">
 							<header>
 								<h5 class="mb-2 text-lg font-bold tracking-tigh">
 									{post.data.title}
@@ -52,7 +52,7 @@ const { page } = Astro.props as { page: Page<CollectionEntry<'blog'>> }
 								autem. Saepe tenetur quaerat cum obcaecati aliquid deleniti non
 								autem odio illum, beatae vero.
 							</p>
-							<footer class="grid grid-cols-2  gap-3 ">
+							<footer class="grid grid-cols-2 gap-3 ">
 								<div class="flex flex-col justify-between font-medium text-xs gap-1">
 									<time datetime={post.data.date}>
 										{new Date(post.data.date).toLocaleDateString('en-us', {
